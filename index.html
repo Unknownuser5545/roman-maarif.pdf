@@ -87,7 +87,7 @@
 <body>
 
 <div id="toolbar">
-  <div id="title">Fath_Ul_Mulhim_Vol_01.pdf</div>
+  <div id="title">roman-maarif.pdf</div>
 
   <div class="tb-group">
     <button class="tb-btn" id="prevBtn" title="Previous page">&#8249;</button>
@@ -106,7 +106,8 @@
 
   <div class="tb-spacer"></div>
 
-  <a class="tb-btn" id="downloadBtn" title="Download page" download>&#8681;</a>
+  <a class="tb-btn" id="downloadBtn" title="Download PDF" download>&#8681;</a>
+  <a class="tb-btn" id="printBtn" title="Print PDF" target="_blank" rel="noopener">&#128438;</a>
 </div>
 
 <div id="viewerWrap">
@@ -116,6 +117,7 @@
 <script>
 (function () {
   var TOTAL_PAGES = 1; // update as more pages are added
+  var PDF_FILE = 'roman-maarif.pdf';
   var state = {
     page: parseInt(localStorage.getItem('fum_page')) || 1,
     zoom: parseInt(localStorage.getItem('fum_zoom')) || 100
@@ -129,6 +131,10 @@
   var prevBtn = document.getElementById('prevBtn');
   var nextBtn = document.getElementById('nextBtn');
   var downloadBtn = document.getElementById('downloadBtn');
+  var printBtn = document.getElementById('printBtn');
+  downloadBtn.href = PDF_FILE;
+  downloadBtn.setAttribute('download', PDF_FILE);
+  printBtn.href = PDF_FILE + '#toolbar=1';
 
   function pad(n) { return String(n).padStart(4, '0'); }
   function srcFor(n) { return 'pages/p' + pad(n) + '.webp'; }
